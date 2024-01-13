@@ -1,0 +1,19 @@
+{
+  "name": "screenaudit-webapp",
+  "version": "1.0.0",
+  "description": "Web app for ScreenAudit",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/spencerjstewart/screenaudit-webapp.git"
+  },
+  "author": "Spencer Stewart",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/spencerjstewart/screenaudit-webapp/issues"
+  },
+  "homepage": "https://github.com/spencerjstewart/screenaudit-webapp#readme"
+}
