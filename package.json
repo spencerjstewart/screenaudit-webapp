@@ -2,7 +2,7 @@
   "name": "screenaudit-webapp",
   "version": "1.0.0",
   "description": "Web app for ScreenAudit",
-  "main": "app.js",
+  "main": "./src/client/",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
