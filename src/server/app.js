@@ -16,6 +16,9 @@ const { PORT } = process.env;
 // Set view engine
 app.set("view engine", "ejs");
 
+// Set static folder
+app.use(express.static("public"));
+
 // Use routes
 const indexRoutes = require("./routes/indexRoutes");
 app.use("/", indexRoutes);
