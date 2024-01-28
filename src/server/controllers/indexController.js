@@ -1,6 +1,3 @@
-// indexController.js
-const renderHomePage = (req, res) => {
+exports.renderHomePage = (req, res) => {
   res.render("index", { title: "Home Page" });
 };
-
-module.exports = { renderHomePage };
