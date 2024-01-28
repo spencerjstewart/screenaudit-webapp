@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Web app for ScreenAudit",
   "main": "./src/client/",
+  "type": "commonjs",
   "scripts": {
     "test": "jest",
     "run-dev": "concurrently \"webpack --watch\" \"node ./src/server/app.js\""
