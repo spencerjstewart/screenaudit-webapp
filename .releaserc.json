@@ -1,0 +1,21 @@
+{
+  "branches": [
+    "main",
+    {
+      "name": "feat/*",
+      "prerelease": "feat"
+    },
+    {
+      "name": "bugfix/*",
+      "prerelease": "bugfix"
+    },
+    {
+      "name": "chore/*",
+      "prerelease": "chore"
+    }
+  ],
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator"
+  ]
+}
