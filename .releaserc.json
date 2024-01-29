@@ -12,6 +12,14 @@
     {
       "name": "chore/*",
       "prerelease": "chore"
+    },
+    {
+      "name": "refactor/*",
+      "prerelease": "refactor"
+    },
+    {
+      "name": "test/*",
+      "prerelease": "test"
     }
   ],
   "plugins": [
