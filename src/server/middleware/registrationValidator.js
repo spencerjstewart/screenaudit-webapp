@@ -1,7 +1,7 @@
 const { validationResult } = require("express-validator");
 
 const { body } = require("express-validator");
-const { User } = require("../models/users");
+const { User } = require("../models");
 
 const validations = [
   body("email", "Invalid email")
@@ -11,7 +11,7 @@ const validations = [
     .custom(async (email) => {
       const existingUser = await User.findOne({ where: { email: email } });
       if (existingUser) {
-        throw new Error("User already exists with this email");
+        throw new Error("EmailAlreadyExists");
       }
     }),
   body("password", "Password must be at least 8 characters long")
@@ -22,7 +22,14 @@ const validations = [
 const handleValidationErrors = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
+    if (errors.array().some((error) => error.msg === "EmailAlreadyExists")) {
+      return res.status(409).send("Email already exists");
+    } else {
+      const concatenatedMessages = errors.array().reduce((acc, error) => {
+        return acc + (acc ? " " : "") + error.msg;
+      }, "");
+      return res.status(400).send(concatenatedMessages);
+    }
   }
   next();
 };
