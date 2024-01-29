@@ -1,8 +1,9 @@
-// middleware/registrationValidator.js
-const { body } = require("express-validator");
-const { User } = require("../models");
+const { validationResult } = require("express-validator");
 
-const validateRegistration = [
+const { body } = require("express-validator");
+const { User } = require("../models/users");
+
+const validations = [
   body("email", "Invalid email")
     .trim()
     .escape()
@@ -18,4 +19,12 @@ const validateRegistration = [
     .isLength({ min: 8 }),
 ];
 
-module.exports = validateRegistration;
+const handleValidationErrors = (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+  next();
+};
+
+module.exports = { validations, handleValidationErrors };
