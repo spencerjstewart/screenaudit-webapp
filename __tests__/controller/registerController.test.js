@@ -34,7 +34,9 @@ async function seedDatabase() {
 }
 
 async function cleanupDatabase() {
-  await User.delete({ email: "existinguser@test.com" });
+  await User.destroy({
+    where: { email: "existinguser@test.com" },
+  });
 }
 
 describe("Register Controller", () => {
