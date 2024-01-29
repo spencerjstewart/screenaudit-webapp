@@ -22,8 +22,11 @@ app.use(express.static("public"));
 // Use routes
 const indexRoutes = require("./routes/indexRoutes");
 app.use("/", indexRoutes);
+const registerRoutes = require("./routes/registerRoutes");
+app.use("/register", registerRoutes);
+const loginRoutes = require("./routes/loginRoutes");
+app.use("/login", loginRoutes);
 
-// Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
