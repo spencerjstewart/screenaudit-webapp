@@ -6,10 +6,14 @@ const express = require("express");
 const app = express();
 
 // Environment variables
-const envPath =
-  process.env.NODE_ENV === "production"
-    ? ".env.production"
-    : ".env.development";
+let envPath;
+if (process.env.NODE_ENV === "production") {
+  envPath = ".env.production";
+} else if (process.env.NODE_ENV === "test") {
+  envPath = ".env.test";
+} else {
+  envPath = ".env.development";
+}
 require("dotenv").config({ path: path.resolve(process.cwd(), envPath) });
 const { PORT } = process.env;
 
