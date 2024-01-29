@@ -19,14 +19,20 @@ app.set("view engine", "ejs");
 // Set static folder
 app.use(express.static("public"));
 
+// Body parser middleware
+app.use(express.json()); // for parsing application/json
+app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
 // Use routes
 const indexRoutes = require("./routes/indexRoutes");
 app.use("/", indexRoutes);
 const registerRoutes = require("./routes/registerRoutes");
-app.use("/register", registerRoutes);
+app.use("/", registerRoutes);
 const loginRoutes = require("./routes/loginRoutes");
 app.use("/login", loginRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+module.exports = app;

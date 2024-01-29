@@ -6,8 +6,8 @@
       "prerelease": "feat"
     },
     {
-      "name": "bugfix/*",
-      "prerelease": "bugfix"
+      "name": "fix/*",
+      "prerelease": "fix"
     },
     {
       "name": "chore/*",
