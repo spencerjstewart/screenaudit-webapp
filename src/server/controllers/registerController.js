@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt");
-const User = require("../models").User;
+const User = require("../models/users").User;
 
 exports.registerUser = async (req, res) => {
   try {
@@ -13,6 +13,7 @@ exports.registerUser = async (req, res) => {
 
     res.redirect("/login");
   } catch (error) {
+    console.log("Error in registration: ", error);
     res.status(500).send("Error occurred during registration");
   }
 };
