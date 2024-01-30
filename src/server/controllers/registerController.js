@@ -17,3 +17,7 @@ exports.registerUser = async (req, res) => {
     res.status(500).send("Error occurred during registration");
   }
 };
+
+exports.registerPage = (req, res) => {
+  res.render("register");
+};

@@ -19,6 +19,7 @@ const { PORT } = process.env;
 
 // Set view engine
 app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "/views"));
 
 // Set static folder
 app.use(express.static("public"));

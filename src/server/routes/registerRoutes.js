@@ -6,6 +6,8 @@ const {
   handleValidationErrors,
 } = require("../middleware/registrationValidator");
 
+router.get("/register", registerController.registerPage);
+
 router.post(
   "/register",
   validations,
