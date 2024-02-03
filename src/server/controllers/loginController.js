@@ -1,10 +1,34 @@
-exports.loginUser = async (req, res) => {
-  // Implement login logic:
-  // 1. Validate input
-  // 2. Verify credentials
-  // 3. Generate JWT or session token
-  // 4. Handle any errors
-  // 5. Redirect to a dashboard page or home page
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const { User } = require("../models");
 
-  res.redirect("/dashboard")
-}
+exports.loginUser = async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    // Attempt to find the user by email
+    const user = await User.findOne({ where: { email } });
+    if (!user) {
+      return res
+        .status(401)
+        .json({ message: "The email entered was not found." });
+    }
+
+    // Compare provided password with hashed password in the database
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(401).json({ message: "Invalid password." });
+    }
+
+    // Generate JWT for the user
+    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+      expiresIn: "1h",
+    });
+
+    // Respond with success message and token
+    res.json({ message: "Login successful", token });
+  } catch (error) {
+    // Handle unexpected server errors
+    res.status(500).json({ message: "Server error", error });
+  }
+};
