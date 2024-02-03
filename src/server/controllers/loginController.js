@@ -25,8 +25,12 @@ exports.loginUser = async (req, res) => {
       expiresIn: "1h",
     });
 
-    // Respond with success message and token
-    res.json({ message: "Login successful", token });
+    res.cookie("token", token, {
+      httpOnly: true,
+      maxAge: 3600000,
+    });
+
+    res.redirect("/dashboard");
   } catch (error) {
     // Handle unexpected server errors
     res.status(500).json({ message: "Server error", error });
