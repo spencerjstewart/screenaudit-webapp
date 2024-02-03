@@ -12,6 +12,20 @@ module.exports.associations = (db) => {
       as: "screenshots",
       onDelete: "CASCADE",
     });
+
+    user.belongsToMany(models.User, {
+      through: "auditor_auditee_xref",
+      as: "auditees",
+      foreignKey: "auditorId",
+      otherKey: "auditeeId",
+    });
+
+    user.belongsToMany(models.User, {
+      through: "auditor_auditee_xref",
+      as: "auditors",
+      foreignKey: "auditeeId",
+      otherKey: "auditorId",
+    });
   };
 
   screenshot.associate = (models) => {
