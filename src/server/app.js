@@ -41,6 +41,8 @@ const loginRoutes = require("./routes/loginRoutes");
 app.use("/", loginRoutes);
 const dashboardRoutes = require("./routes/dashboardRoutes");
 app.use("/", dashboardRoutes);
+const relationshipRoutes = require("./routes/relationshipRoutes");
+app.use("/", relationshipRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
