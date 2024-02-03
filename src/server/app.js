@@ -14,10 +14,10 @@ if (process.env.NODE_ENV === "production") {
 } else {
   envPath = ".env.development";
 }
-require("dotenv").config({ path: path.resolve(process.cwd(), envPath) });
+
+const projectRootPath = path.resolve(__dirname, "../../");
+require("dotenv").config({ path: path.resolve(projectRootPath, envPath) });
 const { PORT } = process.env;
-console.log(`Environment: ${process.env.NODE_ENV}`);
-console.log(`Port: ${PORT}`);
 
 // Set view engine
 app.set("view engine", "ejs");
@@ -37,6 +37,8 @@ const registerRoutes = require("./routes/registerRoutes");
 app.use("/", registerRoutes);
 const loginRoutes = require("./routes/loginRoutes");
 app.use("/", loginRoutes);
+const dashboardRoutes = require("./routes/dashboardRoutes");
+app.use("/", dashboardRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
