@@ -57,4 +57,4 @@ class RelationshipManager {
   }
 }
 
-module.exports = { RelationshipManager };
+module.exports = RelationshipManager;
