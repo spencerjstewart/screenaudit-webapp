@@ -2,7 +2,7 @@
   "name": "screenaudit-webapp",
   "version": "1.0.0",
   "description": "Web app for ScreenAudit",
-  "main": "./src/client/",
+  "main": "./src/index.js",
   "type": "commonjs",
   "scripts": {
     "test": "NODE_ENV=test jest",
