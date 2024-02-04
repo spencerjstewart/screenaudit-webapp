@@ -35,11 +35,48 @@ router.get("/api/relationships", authenticateToken, async (req, res) => {
         },
       ],
     });
-    return res.json(relationships);
+
+    const relationshipData = relationships.map((relationship) => {
+      return relationship.get({ plain: true });
+    });
+
+    return res.json(transformRelationships(relationshipData, userId));
   } catch (error) {
     return res.status(400).json({ error: error.message, cause: error.cause });
   }
 });
+
+function transformRelationships(relationships, currentUserId) {
+  let auditors = [];
+  let auditees = [];
+
+  relationships.forEach((relationship) => {
+    const { auditor, auditee } = relationship;
+
+    // Remove passwords from the relationship objects
+    delete auditor.password;
+    delete auditee.password;
+
+    // Determine if the current user is the auditor or the auditee and categorize accordingly
+    if (auditor.id === currentUserId) {
+      auditees.push({
+        ...auditee,
+        status: relationship.status,
+        createdAt: relationship.createdAt,
+        updatedAt: relationship.updatedAt,
+      });
+    } else if (auditee.id === currentUserId) {
+      auditors.push({
+        ...auditor,
+        status: relationship.status,
+        createdAt: relationship.createdAt,
+        updatedAt: relationship.updatedAt,
+      });
+    }
+  });
+
+  return { auditors, auditees };
+}
 
 router.put(
   "/api/relationships/accept/:id",
