@@ -1,6 +1,7 @@
 // Requires
 const path = require("path");
 const express = require("express");
+const cookieParser = require("cookie-parser");
 
 // Initialize express app
 const app = express();
@@ -29,6 +30,7 @@ app.use(express.static("public"));
 // Body parser middleware
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+app.use(cookieParser());
 
 // Use routes
 const indexRoutes = require("./routes/indexRoutes");
