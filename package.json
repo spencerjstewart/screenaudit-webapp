@@ -2,12 +2,12 @@
   "name": "screenaudit-webapp",
   "version": "1.0.0",
   "description": "Web app for ScreenAudit",
-  "main": "./src/client/",
+  "main": "./src/index.js",
   "type": "commonjs",
   "scripts": {
     "test": "NODE_ENV=test jest",
-    "build": "webpack",
-    "run-dev": "concurrently \"webpack --watch\" \"node ./src/server/app.js\""
+    "build-dev": "webpack --config webpack.config.js --mode development",
+    "run-dev": "concurrently \"webpack --watch --mode development\" \"node ./src/server/app.js\""
   },
   "repository": {
     "type": "git",

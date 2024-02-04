@@ -1,35 +1,34 @@
-const { DataTypes } = require("sequelize");
-const User = require("./users");
-const Screenshot = require("./screenshots");
+module.exports = (db) => {
+  const { User, Screenshot, AuditorAuditeeXref } = db;
 
-module.exports.associations = (db) => {
-  const user = User(db.sequelize, DataTypes);
-  const screenshot = Screenshot(db.sequelize, DataTypes);
-
-  user.associate = (models) => {
-    user.hasMany(models.Screenshot, {
+  User.associate = (models) => {
+    User.hasMany(models.Screenshot, {
       foreignKey: "userId",
       as: "screenshots",
       onDelete: "CASCADE",
     });
 
-    user.belongsToMany(models.User, {
-      through: "auditor_auditee_xref",
-      as: "auditees",
+    // Define an association from AuditorAuditeeXref to User as auditor
+    AuditorAuditeeXref.belongsTo(User, {
+      as: "auditor",
       foreignKey: "auditorId",
-      otherKey: "auditeeId",
+    });
+    // Define an association from AuditorAuditeeXref to User as auditee
+    AuditorAuditeeXref.belongsTo(User, {
+      as: "auditee",
+      foreignKey: "auditeeId",
     });
 
-    user.belongsToMany(models.User, {
-      through: "auditor_auditee_xref",
-      as: "auditors",
+    // If necessary, also define the inverse associations from User to AuditorAuditeeXref
+    User.hasMany(AuditorAuditeeXref, {
+      as: "audited",
       foreignKey: "auditeeId",
-      otherKey: "auditorId",
     });
+    User.hasMany(AuditorAuditeeXref, { as: "audits", foreignKey: "auditorId" });
   };
 
-  screenshot.associate = (models) => {
-    screenshot.belongsTo(models.User, {
+  Screenshot.associate = (models) => {
+    Screenshot.belongsTo(models.User, {
       foreignKey: "userId",
       as: "user",
     });

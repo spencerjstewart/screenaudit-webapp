@@ -127,7 +127,7 @@ dist
 /.idea/jsLibraryMappings.xml
 /.idea/shelf/*
 /docs/scripts/prettify/Apache-License-2.0.txt
-/public/bundle.js
+/public/*
 /docs/index.html
 /docs/styles/jsdoc-default.css
 /docs/scripts/prettify/lang-css.js

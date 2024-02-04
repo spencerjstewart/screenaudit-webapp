@@ -2,9 +2,12 @@ const path = require("path");
 const JSDocWebpackPlugin = require("jsdoc-webpack-plugin");
 
 module.exports = {
-  entry: "./src/client/js/index.js", // Your main JavaScript file
+  entry: {
+    index: "./src/index.js",
+    dashboard: "./src/client/js/views/dashboard.js",
+  },
   output: {
-    filename: "bundle.js",
+    filename: "[name].bundle.js",
     path: path.resolve(__dirname, "public"),
   },
   module: {

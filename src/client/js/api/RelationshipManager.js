@@ -3,6 +3,14 @@ class RelationshipManager {
     this.apiBaseUrl = apiBaseUrl;
   }
 
+  async fetchAllRelationships() {
+    const response = await fetch(`${this.apiBaseUrl}/relationships`, {
+      method: "GET",
+      credentials: "include",
+    });
+    return await response.json();
+  }
+
   async sendRequest(auditeeId) {
     // Matches POST /api/relationships
     const response = await fetch(`${this.apiBaseUrl}/relationships`, {
@@ -48,3 +56,5 @@ class RelationshipManager {
     return await response.json();
   }
 }
+
+module.exports = RelationshipManager;
