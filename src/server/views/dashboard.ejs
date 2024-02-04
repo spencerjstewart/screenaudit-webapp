@@ -7,14 +7,47 @@
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
         crossorigin="anonymous">
+  <script type="module" src="/dashboard.bundle.js" defer></script>
 </head>
 <body>
 <main class="container mt-5">
   <section>
     <header>
       <h1 class="mb-4">Welcome <%= name %> </h1>
-      <h3>Your email is <%= email %></h3>
     </header>
+
+    <!-- Relationships Form -->
+    <section aria-labelledby="relationship-management-header">
+      <h2 id="relationship-management-header">Manage Relationships</h2>
+      <form class="relationship-form" aria-label="Auditor-Auditee Request Form">
+        <div class="form-group">
+          <label for="auditee-selector" class="form-label">Select
+            Auditee</label>
+          <select id="auditee-selector" class="form-select"
+                  aria-describedby="auditee-help">
+            <!-- Options will be dynamically populated -->
+          </select>
+          <small id="auditee-help" class="form-text">Choose a user to
+            audit.</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Request</button>
+      </form>
+    </section>
+
+    <!-- Current user relationships -->
+    <section aria-labelledby="auditees-list-header">
+      <h2 id="auditees-list-header">My Auditees</h2>
+      <ul class="list-group auditees-list">
+        <!-- Dynamically populated list of auditees -->
+      </ul>
+    </section>
+
+    <section aria-labelledby="auditors-list-header">
+      <h2 id="auditors-list-header">My Auditors</h2>
+      <ul class="list-group auditors-list">
+        <!-- Dynamically populated list of auditors -->
+      </ul>
+    </section>
 
   </section>
 </main>
