@@ -12,7 +12,7 @@ module.exports = {
       },
       auditorId: {
         type: Sequelize.INTEGER,
-        references: { model: "Users", key: "id" }, // Adjust 'Users' if your user table has a different name
+        references: { model: "Users", key: "id" },
         onDelete: "CASCADE",
       },
       auditeeId: {
