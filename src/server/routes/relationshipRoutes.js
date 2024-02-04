@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { AuditorAuditeeXref, User } = require("../models");
 const authenticateToken = require("../middleware/jwtAuth");
+const { Op } = require("sequelize");
 
 router.post("/api/relationships", authenticateToken, async (req, res) => {
   const { auditeeId } = req.body;
@@ -21,11 +22,10 @@ router.post("/api/relationships", authenticateToken, async (req, res) => {
 
 router.get("/api/relationships", authenticateToken, async (req, res) => {
   const userId = req.user.id;
-
   try {
     const relationships = await AuditorAuditeeXref.findAll({
       where: {
-        [sequelize.Op.or]: [{ auditorId: userId }, { auditeeId: userId }],
+        [Op.or]: [{ auditorId: userId }, { auditeeId: userId }],
       },
       include: [
         { model: User, as: "auditor" },
@@ -37,7 +37,7 @@ router.get("/api/relationships", authenticateToken, async (req, res) => {
     });
     return res.json(relationships);
   } catch (error) {
-    return res.status(400).json({ error: error.message });
+    return res.status(400).json({ error: error.message, cause: error.cause });
   }
 });
 
