@@ -4,9 +4,13 @@ const fs = require("fs");
 const path = require("path");
 const Sequelize = require("sequelize");
 const process = require("process");
+
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || "development";
 const config = require(__dirname + "/../config/config.json")[env];
+
+const setupAssociations = require("./associations");
+
 const db = {};
 
 let sequelize;
@@ -28,7 +32,8 @@ fs.readdirSync(__dirname)
       file !== basename &&
       file !== "index.js" &&
       file.slice(-3) === ".js" &&
-      file.indexOf(".test.js") === -1
+      file.indexOf(".test.js") === -1 &&
+      file !== "associations.js"
     );
   })
   .forEach((file) => {
@@ -44,6 +49,9 @@ fs.readdirSync(__dirname)
       db[model.name] = model;
     }
   });
+// We need to load associations after we've loaded the models within the
+// associations
+setupAssociations(db);
 
 Object.keys(db).forEach((modelName) => {
   if (db[modelName].associate) {
