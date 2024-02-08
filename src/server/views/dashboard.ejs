@@ -71,40 +71,55 @@
       <!-- Relationship Management Form -->
       <section class="relationship-management"
                aria-labelledby="relationship-management-header">
-        <header>
-          <h2 class="header relationship-management__header">Manage
-            Relationships</h2>
-        </header>
-        <form class="relationship_management__form relationship-management-form"
-              aria-label="Auditor-Auditee Request Form">
-          <div class="form-group">
-            <label for="relationship-management-form-user-search"
-                   class="form__label"></label>
-            <input id="relationship-management-form-user-search"
-                   class="form__input--text form-control" type="text"
-                   name="user-search">
-            <small class="form-text">Choose a user to
-              connect with.</small>
+        <div class="card">
+          <header class="card-header">
+            <h2 class="header relationship-management__header">Manage
+              Relationships</h2>
+          </header>
+          <div class="card-body">
+            <form class="relationship_management__form relationship-management-form"
+                  aria-label="Auditor-Auditee Request Form">
+              <div class="form-group">
+                <label for="relationship-management-form-user-search"
+                       class="form__label"></label>
+                <input id="relationship-management-form-user-search"
+                       class="form__input--text form-control" type="text"
+                       name="user-search">
+                <small class="form-text">Choose a user to
+                  connect with.</small>
+              </div>
+              <button class="btn btn-primary" type="submit">Send Request</button>
+            </form>
           </div>
-          <button class="btn btn-primary" type="submit">Send Request</button>
-        </form>
+        </div>
       </section>
 
       <!-- Current user relationships -->
-      <article class="auditees">
-        <header class="header auditees__header">
-          <h2>My Auditees</h2>
-        </header>
-        <ul class="auditees__list list-group" aria-label="auditees list">
-          <!-- Dynamically populated list of auditees -->
-        </ul>
+      <article class="auditees mt-5">
+        <div class="card">
+          <header class="header auditees__header card-header">
+            <h2>My Auditees</h2>
+          </header>
+          <div class="card-body">
+            <ul class="auditees__list list-group list-group-flush" aria-label="auditees list">
+              <!-- Dynamically populated list of auditees -->
+            </ul>
+          </div>
+        </div>
       </article>
 
-      <article class="auditors">
-        <h2 id="auditors-list-header">My Auditors</h2>
-        <ul class="auditors__list list-group" aria-label="auditors list">
-          <!-- Dynamically populated list of auditors -->
-        </ul>
+      <article class="auditors mt-5">
+        <div class="card">
+          <header class="header auditors__header card-header">
+            <h2 id="auditors-list-header">My Auditors</h2>
+          </header>
+          <div class="card-body">
+            <ul class="auditors__list list-group list-group-flush"
+                aria-label="auditors list">
+              <!-- Dynamically populated list of auditors -->
+            </ul>
+          </div>
+        </div>
       </article>
     </section>
   </main>

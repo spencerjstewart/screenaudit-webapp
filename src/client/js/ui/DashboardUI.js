@@ -23,12 +23,12 @@ class DashboardUI {
     const relationships = await this.updateRelationshipsList();
     for (const auditor of relationships.auditors) {
       document.querySelector(".auditors__list").innerHTML += `
-        <li>${auditor.name}</li>
+        <li class="list-group-item">${auditor.name}</li>
       `;
     }
     for (const auditee of relationships.auditees) {
       document.querySelector(".auditees__list").innerHTML += `
-        <li>${auditee.name}</li>
+        <li class="list-group-item">${auditee.name}</li>
       `;
     }
     this.loadImages();
