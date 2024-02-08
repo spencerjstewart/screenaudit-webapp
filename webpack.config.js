@@ -1,4 +1,5 @@
 const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const JSDocWebpackPlugin = require("jsdoc-webpack-plugin");
 
 module.exports = {
@@ -14,11 +15,18 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
       },
     ],
   },
   plugins: [
+    new MiniCssExtractPlugin({
+      filename: "styles.css",
+    }),
     new JSDocWebpackPlugin({
       conf: "jsdoc.json",
     }),
