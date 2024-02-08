@@ -1,0 +1,127 @@
+:root {
+    --color-light-shade: #cfccc9;
+    --color-light-accent: #6BA1BF;
+    --color-main: #0000D1;
+    --color-dark-accent: #283D8B;
+    --color-dark-shade: #130F16;
+
+    --text-font-header: 'Source Serif', serif;
+    --text-font-body: 'Inter', sans-serif;
+    --text-color-dark: black;
+    --text-color-light: white;
+
+    font-size: 16px;
+}
+
+/* LAYOUT */
+.layout-container {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: "sidebar main .";
+    height: 100vh;
+}
+
+.sidebar {
+    grid-area: sidebar;
+}
+
+.content {
+    grid-area: main;
+    min-width: 600px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 250px;
+    min-height: 100vh;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+.sidebar__menu {
+    /* Adjustments for sidebar menu */
+}
+
+.sidebar__header {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.sidebar__logo {
+    width: 100%;
+    height: auto;
+}
+
+.sidebar__divider {
+    margin: 0.5rem 0;
+}
+
+.sidebar__sticky {
+    position: sticky;
+    top: 3rem;
+    height: calc(100vh - 3rem);
+    padding-top: 0.5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.sidebar__list .sidebar__item .sidebar__link {
+    color: var(--text-color-dark);
+    transition: color .3s ease;
+}
+
+.sidebar__list .sidebar__item .sidebar__link:hover {
+    color: #000;
+    background-color: #f5f5f5;
+}
+
+.sidebar__sticky {
+    position: sticky;
+    top: 3rem;
+    height: calc(100vh - 3rem);
+    padding-top: 0.5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.sidebar__header {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.sidebar__logo {
+    width: 100%;
+    height: auto;
+}
+
+.sidebar__divider {
+    margin: 0.5rem 0;
+}
+
+@media screen and (max-width: 768px) {
+    .layout-container {
+        grid-template-columns: 1fr; /* Stack everything vertically on small screens */
+        grid-template-areas:
+            "sidebar"
+            "main";
+    }
+
+    .sidebar {
+        /* Ensure the sidebar takes the full width in the stacked layout */
+        width: 100%;
+    }
+
+    .content {
+        /* Remove specific width constraints for the content in a stacked layout */
+        min-width: 500px; /* Adjust as necessary */
+        max-width: none; /* Allow the content to fill the available width */
+        margin: 0 auto; /* Reset margins for the stacked layout */
+    }
+}

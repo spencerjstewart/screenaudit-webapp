@@ -2,54 +2,128 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Screen Audit - Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+      href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,300;1,8..60,400;1,8..60,500;1,8..60,600;1,8..60,700&display=swap"
+      rel="stylesheet">
+  <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,300;1,8..60,400;1,8..60,500;1,8..60,600;1,8..60,700&display=swap"
+      rel="stylesheet">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
         crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles.css"/>
   <script type="module" src="/dashboard.bundle.js" defer></script>
 </head>
 <body>
-<main class="container mt-5">
-  <section>
-    <header>
-      <h1 class="mb-4">Welcome <%= name %> </h1>
-    </header>
 
-    <!-- Relationships Form -->
-    <section aria-labelledby="relationship-management-header">
-      <h2 id="relationship-management-header">Manage Relationships</h2>
-      <form class="relationship-form" aria-label="Auditor-Auditee Request Form">
-        <div class="form-group">
-          <label for="auditee-selector" class="form-label">Select
-            Auditee</label>
-          <select id="auditee-selector" class="form-select"
-                  aria-describedby="auditee-help">
-            <!-- Options will be dynamically populated -->
-          </select>
-          <small id="auditee-help" class="form-text">Choose a user to
-            audit.</small>
+<div class="layout-container">
+  <!-- Sidebar -->
+  <aside class="sidebar d-flex">
+    <nav class="sidebar__menu bg-light">
+      <header class="sidebar__header">
+        <img class="sidebar__logo" src="" alt="Screen Audit Logo">
+      </header>
+      <hr class="sidebar__divider">
+      <div class="sidebar__sticky">
+        <ul class="sidebar__list nav flex-column">
+          <li class="sidebar__item nav-item">
+            <a class="sidebar__link nav-link active" aria-current="page"
+               href="#">
+              Dashboard
+            </a>
+          </li>
+          <li class="sidebar__item nav-item">
+            <a class="sidebar__link" href="#">
+              Notifications
+            </a>
+          </li>
+          <li class="sidebar__item nav-item">
+            <a class="sidebar__link" href="#">
+              Sign In
+            </a>
+          </li>
+          <li class="sidebar__item nav-item">
+            <a class="sidebar__link" href="#">
+              Sign Up
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="content">
+    <section class="dashboard">
+      <header class="dashboard__header">
+        <h1>Welcome <%= name %></h1>
+      </header>
+
+      <!-- Relationship Management Form -->
+      <section class="relationship-management"
+               aria-labelledby="relationship-management-header">
+        <div class="card">
+          <header class="card-header">
+            <h2 class="header relationship-management__header">Manage
+              Relationships</h2>
+          </header>
+          <div class="card-body">
+            <form class="relationship_management__form relationship-management-form"
+                  aria-label="Auditor-Auditee Request Form">
+              <div class="form-group">
+                <label for="relationship-management-form-user-search"
+                       class="form__label"></label>
+                <input id="relationship-management-form-user-search"
+                       class="form__input--text form-control" type="text"
+                       name="user-search">
+                <small class="form-text">Choose a user to
+                  connect with.</small>
+              </div>
+              <button class="btn btn-primary" type="submit">Send Request</button>
+            </form>
+          </div>
         </div>
-        <button type="submit" class="btn btn-primary">Send Request</button>
-      </form>
-    </section>
+      </section>
 
-    <!-- Current user relationships -->
-    <section aria-labelledby="auditees-list-header">
-      <h2 id="auditees-list-header">My Auditees</h2>
-      <ul class="list-group auditees-list">
-        <!-- Dynamically populated list of auditees -->
-      </ul>
-    </section>
+      <!-- Current user relationships -->
+      <article class="auditees mt-5">
+        <div class="card">
+          <header class="header auditees__header card-header">
+            <h2>My Auditees</h2>
+          </header>
+          <div class="card-body">
+            <ul class="auditees__list list-group list-group-flush" aria-label="auditees list">
+              <!-- Dynamically populated list of auditees -->
+            </ul>
+          </div>
+        </div>
+      </article>
 
-    <section aria-labelledby="auditors-list-header">
-      <h2 id="auditors-list-header">My Auditors</h2>
-      <ul class="list-group auditors-list">
-        <!-- Dynamically populated list of auditors -->
-      </ul>
+      <article class="auditors mt-5">
+        <div class="card">
+          <header class="header auditors__header card-header">
+            <h2 id="auditors-list-header">My Auditors</h2>
+          </header>
+          <div class="card-body">
+            <ul class="auditors__list list-group list-group-flush"
+                aria-label="auditors list">
+              <!-- Dynamically populated list of auditors -->
+            </ul>
+          </div>
+        </div>
+      </article>
     </section>
+  </main>
+</div>
 
-  </section>
-</main>
 </body>
 </html>
