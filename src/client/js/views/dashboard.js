@@ -1,3 +1,6 @@
+require("../../css/common.css");
+require("../../css/dashboard.css");
+
 const RelationshipManager = require("../api/RelationshipManager.js");
 const DashboardUI = require("../ui/DashboardUI.js");
 

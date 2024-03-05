@@ -1,0 +1,84 @@
+body {
+    background-color: var(--color-light-shade);
+    color: var(--text-color-dark);
+}
+
+.container, .navbar .container-fluid {
+    max-width: 768px;
+}
+
+.navbar {
+    background-color: var(--color-main);
+}
+
+.navbar .container-fluid {
+    display: flex;
+}
+
+.navbar__brand {
+    color: var(--color-main);
+    flex-grow: 1;
+    text-align: right;
+}
+
+.navbar-brand, .nav-link {
+    color: var(--text-color-light);
+}
+
+.navbar__nav-item, .navbar-brand {
+    padding: 0.2rem 0.6rem;
+}
+
+.nav-link, .navbar-brand {
+    border-radius: 0.6rem;
+}
+
+.nav-link.active {
+    color: var(--text-color-light) !important;
+    text-decoration: underline;
+}
+
+.nav-link:hover, .nav-link.active:hover, .navbar-brand:hover {
+    color: var(--text-color-dark) !important;
+    background-color: var(--color-light-shade);
+}
+
+.card {
+    background-color: white;
+    border-radius: 0.6rem;
+    box-shadow: 0 0.25rem 0.4rem rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.card-title {
+    color: var(--color-main);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.card-text {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn-primary {
+    background-color: var(--color-main);
+    border-color: var(--color-main);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-dark-accent);
+    border-color: var(--color-dark-accent);
+}
+
+h1 {
+    color: var(--color-main);
+}
+
+.lead {
+    color: var(--color-dark-accent);
+}
