@@ -22,11 +22,11 @@
         crossorigin="anonymous">
   <style>
       :root {
-          --color-light-shade: #cfccc9;
-          --color-light-accent: #6BA1BF;
-          --color-main: #0000D1;
-          --color-dark-accent: #283D8B;
-          --color-dark-shade: #130F16;
+          --color-light-shade: #F6F6F2;
+          --color-light-accent: #6296B5;
+          --color-main: #4754FF;
+          --color-dark-accent: #B03D59;
+          --color-dark-shade: #1F1521;
 
           --text-font-header: 'Source Serif', serif;
           --text-font-body: 'Inter', sans-serif;
@@ -46,7 +46,7 @@
       }
 
       .navbar {
-          background-color: var(--color-dark-accent);
+          background-color: var(--color-main);
       }
 
       .navbar .container-fluid {
@@ -54,6 +54,7 @@
       }
 
       .navbar__brand {
+          color: var(--color-main);
           flex-grow: 1;
           text-align: right;
       }
@@ -62,14 +63,28 @@
           color: var(--text-color-light);
       }
 
-      .navbar__nav-item {
-          padding: 0 0.6rem;
+      .navbar__nav-item, .navbar-brand {
+          padding: 0.2rem 0.6rem;
+      }
+
+      .nav-link, .navbar-brand {
+          border-radius: 0.6rem;
+      }
+
+      .nav-link.active {
+          color: var(--text-color-light) !important;
+          text-decoration: underline;
+      }
+
+      .nav-link:hover, .nav-link.active:hover, .navbar-brand:hover {
+          color: var(--text-color-dark) !important;
+          background-color: var(--color-light-shade);
       }
 
       .card {
           background-color: white;
-          border-radius: 10px;
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          border-radius: 0.6rem;
+          box-shadow: 0 0.25rem 0.4rem rgba(0, 0, 0, 0.1);
           margin-top: 2rem;
       }
 
