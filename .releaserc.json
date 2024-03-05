@@ -6,6 +6,10 @@
       "prerelease": "feat"
     },
     {
+      "name": "style/*",
+      "prerelease": "style"
+    },
+    {
       "name": "fix/*",
       "prerelease": "fix"
     },
