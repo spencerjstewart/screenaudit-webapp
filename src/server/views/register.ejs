@@ -26,39 +26,45 @@
 
 <%- include('./partials/navbar') %>
 
-<main class="container mt-5">
+<main class="container mt-3">
   <section>
-    <header>
-      <h1 class="mb-4">Register for Screen Audit</h1>
-    </header>
+    <div class="card">
+      <div class="card-body">
+        <header>
+          <h2 class="card-title">Register for Screen Audit</h2>
+          <p class="card-subtitle">Already have an account? <a
+                href="/login">login</a></p>
+        </header>
+        <article>
+          <form action="/register" method="post">
+            <fieldset>
+              <legend class="visually-hidden">Registration Details
+              </legend>
 
-    <article>
-      <form action="/register" method="post">
-        <fieldset>
-          <legend class="visually-hidden">Registration Details
-          </legend>
-
-          <div class="mb-3">
-            <label for="name" class="form-label">Name:</label>
-            <input type="text" class="form-control" id="name" name="name"
-                   required>
-          </div>
-          <div class="mb-3">
-            <label for="email" class="form-label">Email:</label>
-            <input type="email" class="form-control" id="email" name="email"
-                   required>
-          </div>
-          <div class="mb-3">
-            <label for="password" class="form-label">Password:</label>
-            <input type="password" class="form-control" id="password"
-                   name="password" required>
-          </div>
-          <button type="submit" class="btn btn-primary">Register
-          </button>
-        </fieldset>
-      </form>
-    </article>
+              <div class="mb-3">
+                <label for="name" class="form-label">Name:</label>
+                <input type="text" class="form-control" id="name" name="name"
+                       required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" class="form-control" id="email" name="email"
+                       required>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" class="form-control" id="password"
+                       name="password" required>
+              </div>
+              <button type="submit" class="btn btn-primary">Register
+              </button>
+            </fieldset>
+          </form>
+        </article>
+      </div>
+    </div>
   </section>
+
 </main>
 
 </body>
