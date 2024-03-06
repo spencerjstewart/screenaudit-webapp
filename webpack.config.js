@@ -4,8 +4,9 @@ const JSDocWebpackPlugin = require("jsdoc-webpack-plugin");
 
 module.exports = {
   entry: {
-    index: "./src/index.js",
+    index: "./src/client/js/views/index.js",
     dashboard: "./src/client/js/views/dashboard.js",
+    register: "./src/client/js/views/register.js",
   },
   output: {
     filename: "[name].bundle.js",
@@ -25,7 +26,8 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "styles.css",
+      filename: "[name].css",
+      chunkFilename: "[id].css",
     }),
     new JSDocWebpackPlugin({
       conf: "jsdoc.json",
