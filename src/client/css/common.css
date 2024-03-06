@@ -52,3 +52,9 @@
     color: var(--text-color-dark) !important;
     background-color: var(--color-light-shade);
 }
+
+@media (max-width: 992px) {
+    .navbar__brand {
+        text-align: left;
+    }
+}
